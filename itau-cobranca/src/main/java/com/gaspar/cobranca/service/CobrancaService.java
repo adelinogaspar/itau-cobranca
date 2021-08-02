@@ -16,6 +16,9 @@ public class CobrancaService {
     @Autowired
     CobrancaRepository cobrancaRepository;
 
+    @Autowired
+    QueueService queueService;
+
     Cobranca save(Cobranca cobranca) {
         try {
             return cobrancaRepository.save(cobranca);
@@ -26,6 +29,8 @@ public class CobrancaService {
 
     public Cobranca criaCobranca(Cobranca cobranca) {
         cobranca.setDataCriacao(new Date());
-        return save(cobranca);
+        save(cobranca);
+        queueService.enqueue(cobranca);
+        return cobranca;
     }
 }
