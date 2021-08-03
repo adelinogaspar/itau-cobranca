@@ -24,11 +24,9 @@ spring:
     password: #{null}
   data:
     mongodb:
-      username: dbuser
+      username: dbuser_cobranca
       password: #{null}
       host: 127.0.0.1
       port: 27017
-      database: itau
+      database: itau_cobranca_db
       auto-index-creation: true
-      #uri: mongodb://127.0.0.1:27017/itau
-      #uri: "mongodb://dbuser:SenhaMuitoDificil123@127.0.0.1:27017/itau"

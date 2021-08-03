@@ -75,6 +75,17 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: MongoDB2020!
 
+  mailhog:
+    networks: 
+      - testnet
+    image: mailhog/mailhog
+    restart: 'always'
+    ports:
+      - 1025:1025
+      - 8025:8025
+    volumes:
+      - ./storage/mailhog:/maildir
+
   #cobranca1:
   #  container_name: itau-cobranca1
   #  networks:

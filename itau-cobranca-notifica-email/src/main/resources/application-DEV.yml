@@ -1,0 +1,43 @@
+server:
+  port: 9103
+  servlet.session.timeout: 3600
+  tomcat:
+    threads:
+      max: 1000
+    max-threads: 1000
+
+#port used to expose actuator
+management:
+  server:
+    port: ${server.port}
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+
+spring:
+  application:
+    name: itau-cobranca
+  rabbitmq:
+    # lista dos servidores (host:port) rabbitmq que fazem parte do cluster (separados por v�rgula)
+    addresses: 127.0.0.1:5672
+    username: mqadmin
+    password: #{null}
+  data:
+    mongodb:
+      username: dbuser_notifica_email
+      password: #{null}
+      host: 127.0.0.1
+      port: 27017
+      database: itau_notifica_email_db
+      auto-index-creation: true
+
+mail:
+  from: nao-responda@itau.com.br
+  host: 127.0.0.1
+  port: 1025
+  username: #my.gmail@gmail.com
+  password: #password
+  transport-protocol: smtp
+  smtp-auth: false #true
+  smtp-start-tls-enable: false #true
+  debug: true

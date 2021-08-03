@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gaspar</groupId>
-	<artifactId>cobranca</artifactId>
+	<artifactId>cobrancaNotificaEmail</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cobranca</name>
+	<name>cobrancaNotificaEmail</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -59,6 +59,11 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.4.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.3.4.RELEASE</version>
 		</dependency>
 	</dependencies>
 

@@ -1,16 +1,12 @@
-package com.gaspar.cobranca.controller;
+package com.gaspar.cobrancanotificaemail.controller;
 
-
-import com.gaspar.cobranca.dto.CobrancaDto;
-import com.gaspar.cobranca.dto.CobrancaPostDto;
-import com.gaspar.cobranca.entity.Cobranca;
-import com.gaspar.cobranca.service.CobrancaService;
-import com.gaspar.cobranca.service.ConvertService;
+import com.gaspar.cobrancanotificaemail.dto.CobrancaDto;
+import com.gaspar.cobrancanotificaemail.dto.CobrancaPostDto;
+import com.gaspar.cobrancanotificaemail.service.ConvertService;
+import com.gaspar.cobrancanotificaemail.service.EmailService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,25 +20,17 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(
-        value = "/cobranca",
+        value = "/teste",
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
-public class CobrancaController {
+public class TesteEmailController {
 
     @Autowired
-    CobrancaService cobrancaService;
+    EmailService emailService;
 
     @Autowired
     ConvertService convert;
 
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "201", description = "Cobrança criada",
-                    content = @Content(schema = @Schema(implementation = CobrancaDto.class))),
-            @ApiResponse(
-                    responseCode = "400", description = "Invalid input",
-                    content = @Content(schema = @Schema(implementation = Void.class)))
-    })
     @PostMapping
     public ResponseEntity<CobrancaDto> criaCobranca (
             @Parameter(description="CobrancaDto: dados de cobrança, não pode ser nulo ou vazio",
@@ -50,7 +38,7 @@ public class CobrancaController {
                     content = @Content(schema=@Schema(implementation = CobrancaPostDto.class)))
             @Valid @RequestBody CobrancaPostDto cobrancaPostDto
     ) {
-        Cobranca cobranca = cobrancaService.criaCobranca(convert.toEntity(cobrancaPostDto));
-        return new ResponseEntity(convert.toDto(cobranca), HttpStatus.CREATED);
+        emailService.sendMailCobranca(convert.toEntity(cobrancaPostDto));
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 }
