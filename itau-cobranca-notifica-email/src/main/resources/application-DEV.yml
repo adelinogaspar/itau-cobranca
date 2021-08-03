@@ -19,21 +19,21 @@ spring:
     name: itau-cobranca
   rabbitmq:
     # lista dos servidores (host:port) rabbitmq que fazem parte do cluster (separados por v�rgula)
-    addresses: 127.0.0.1:5672
+    addresses: localhost:5672
     username: mqadmin
     password: #{null}
   data:
     mongodb:
       username: dbuser_notifica_email
       password: #{null}
-      host: 127.0.0.1
+      host: localhost
       port: 27017
       database: itau_notifica_email_db
       auto-index-creation: true
 
 mail:
   from: nao-responda@itau.com.br
-  host: 127.0.0.1
+  host: localhost
   port: 1025
   username: #my.gmail@gmail.com
   password: #password

@@ -28,4 +28,13 @@ db.createUser(
     }
 );
 
+db.template_email.insertOne({
+    "categoria" : "cobranca",
+    "assunto" : "olá #nome#! Temos uma proposta irrecusável",
+    "from" : "sac@itau.com.br",
+    "corpo" : "Olá #nome#. Estamos entrando em contato para negociar...",
+    "_class" : "com.gaspar.cobrancanotificaemail.entity.TemplateEmail"
+});
+
+
 print("######################## FIM ##############################")

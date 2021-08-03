@@ -64,33 +64,33 @@ services:
     volumes:
       - ./storage/mailhog:/maildir
 
-  cobranca1:
-    container_name: itau-cobranca1
-    networks:
-      - testnet
-    build:
-      context: ./itau-cobranca
-      dockerfile: Dockerfile
-    restart: 'always'
-    ports:
-      - 9102:9102
-    environment:
-      EXTRA_PROPERTIES: "--spring.rabbitmq.addresses=rabbitmq1:5672 --spring.profiles.active=DEV --spring.data.mongodb.password=SenhaMuitoDificil123 --spring.rabbitmq.password=Admin123XX_ --spring.data.mongodb.host=mongodb1 "
-      APP_NAME: cobranca
-
-  cobranca-notifica-email1:
-    container_name: itau-cobranca-notifica-email1
-    networks:
-      - testnet
-    build:
-      context: ./itau-cobranca-notifica-email
-      dockerfile: Dockerfile
-    restart: 'always'
-    ports:
-      - 9103:9103
-    environment:
-      EXTRA_PROPERTIES: "--mail.host=mailhog --spring.rabbitmq.addresses=rabbitmq1:5672 --spring.profiles.active=DEV --spring.data.mongodb.password=SenhaMuitoDificil123 --spring.rabbitmq.password=Admin123XX_ --spring.data.mongodb.host=mongodb1 "
-      APP_NAME: cobrancaNotificaEmail      
+#  cobranca1:
+#    container_name: itau-cobranca1
+#    networks:
+#      - testnet
+#    build:
+#      context: ./itau-cobranca
+#      dockerfile: Dockerfile
+#    restart: 'always'
+#    ports:
+#      - 9102:9102
+#    environment:
+#      EXTRA_PROPERTIES: "--spring.rabbitmq.addresses=rabbitmq1:5672 --spring.profiles.active=DEV --spring.data.mongodb.password=SenhaMuitoDificil123 --spring.rabbitmq.password=Admin123XX_ --spring.data.mongodb.host=mongodb1 "
+#      APP_NAME: cobranca
+#
+#  cobranca-notifica-email1:
+#    container_name: itau-cobranca-notifica-email1
+#    networks:
+#      - testnet
+#    build:
+#      context: ./itau-cobranca-notifica-email
+#      dockerfile: Dockerfile
+#    restart: 'always'
+#    ports:
+#      - 9102:9102
+#    environment:
+#      EXTRA_PROPERTIES: "--mail.host=mailhog --spring.rabbitmq.addresses=rabbitmq1:5672 --spring.profiles.active=DEV --spring.data.mongodb.password=SenhaMuitoDificil123 --spring.rabbitmq.password=Admin123XX_ --spring.data.mongodb.host=mongodb1 "
+#      APP_NAME: cobrancaNotificaEmail      
 
 networks: 
   testnet:

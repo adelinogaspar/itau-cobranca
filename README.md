@@ -11,6 +11,10 @@ A idéia desse projeto é propor uma solução de módulos que tenham funções 
 docker-compose up
 ```
 
+```bash
+docker-compose -f docker-compose-full.yml up
+```
+
 O comando acima irá iniciar os containers com os seguintes serviços: [Mongodb], [RabbitMq] e [MailHog].
 
 

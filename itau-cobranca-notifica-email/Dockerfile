@@ -11,7 +11,7 @@ RUN mvn clean package
 
 
 FROM openjdk:14-jdk
-ARG APP_NAME=cobranca
+ARG APP_NAME=cobrancaNotificaEmail
 COPY --from=build /app/target/${APP_NAME}.jar /app/
 COPY docker/entrypoint.sh /app/entrypoint.sh
 
