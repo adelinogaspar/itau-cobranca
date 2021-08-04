@@ -12,6 +12,5 @@ public class CobrancaDto {
     String nome;
     String email;
     String telefone;
-    String idTelegram;
     Date dataCriacao;
 }
