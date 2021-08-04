@@ -10,5 +10,4 @@ public class CobrancaPostDto {
     String nome;
     String email;
     String telefone;
-    String idTelegram;
 }

@@ -18,6 +18,5 @@ public class Cobranca {
     String nome;
     String email;
     String telefone;
-    String idTelegram;
     Date dataCriacao;
 }

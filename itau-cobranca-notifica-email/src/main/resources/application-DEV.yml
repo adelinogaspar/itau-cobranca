@@ -17,11 +17,24 @@ management:
 spring:
   application:
     name: itau-cobranca
+
   rabbitmq:
     # lista dos servidores (host:port) rabbitmq que fazem parte do cluster (separados por v�rgula)
     addresses: localhost:5672
     username: mqadmin
     password: #{null}
+    listener:
+      simple:
+        concurrency: 5
+        prefetch: 10
+        retry:
+          enabled: true   # Allow retry of message consumption failure
+          max-attempts: 10   # The maximum number of messages consumed is 3 times
+          multiplier: 5
+          max-concurrency: 5
+          concurrency: 5
+          initial-interval: 2000    # The interval between multiple consumption of messages is 2 seconds
+
   data:
     mongodb:
       username: dbuser_notifica_email
