@@ -15,7 +15,7 @@ O comando abaixo irá iniciar todos os containers necessários para o desenvolvi
 docker-compose -f docker-compose-dev.yml up
 ```
 
-Este comando poderá demorar um pouco para rodar, pois irá subir todos os containers de bancos de dados, rabbitmq e irá compilar e gerar as imagens docker dos projetos de `cobrança` e `notificação de cobrança por email`
+Este comando poderá demorar um pouco para rodar na primeira vez (~16 minutos), pois irá subir todos os containers de bancos de dados, rabbitmq e irá compilar e gerar as imagens docker dos projetos de `itau-cobranca` e `itau-cobranca-notifica-email`
 
 ```bash
 docker-compose up
