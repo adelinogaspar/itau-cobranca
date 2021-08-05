@@ -1,6 +1,8 @@
 # itau-cobranca
 
-A idéia desse projeto é propor uma solução de módulos que tenham funções bem específicas e possam trabalhar de forma assíncrona e que sejam escaláveis.
+A idéia desse projeto é propor uma solução de [módulos](#módulos) que tenham funções bem específicas e possam trabalhar de forma assíncrona e que sejam escaláveis.
+
+Para facilitar a apresentação, os dois módulos implementados nessa POC estão contidos nesse mesmo repositório git.
 
 
 ## Requisitos para execução do projeto localmente
@@ -44,6 +46,22 @@ Sistema de fila usado para distribuir as informações de forma que as aplicaç�
 
 Servidor fake de emails usado para teste.
 Possui uma interface web para consultar o que foi enviado, e a configuração da aplicação da aplicação java é exatamente a mesma de um servidor smtp real, facilitando os testes e o deploy da aplicação em ambiente de produção ou homologação.
+
+### MongoDb
+
+Durante a inicialização do projeto com `docker-compose up`, será disparado junto com a primeira inicialização do banco de dados o arquivo `docker/mongo-init.js`.
+
+Neste arquivo, serão criados os usuários e bancos necessários para executar a aplicação localmente.
+
+# Módulos
+
+## itau-cobranca
+
+Este projeto é uma interface REST que recebe as informações de cobrança de um determinado cliente, grava em forma de documento dentro de um banco de dados (MongoDB) e e publica uma mensagem em diversas filas (RabbitMq) para que sejam notificados diversos canais de forma assíncrona: email, sms, carta, telefone, whatsapp.
+
+## itau-cobranca-notify-email
+
+Este projeto ouve a fila `queue.notifica.cobranca.email`, obtém os dados de cobrança, aplica um template de mensagem e envia o texto para o servidor SMTP configurado no profile do spring.
 
 # Diagramas
 
